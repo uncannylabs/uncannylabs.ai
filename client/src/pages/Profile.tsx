@@ -174,7 +174,8 @@ export default function Profile() {
               {[
                 { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'ReadCV', url: 'https://read.cv/simonian' },
                 { type: 'twitter', icon: <XLogo />, label: 'X', url: 'https://x.com/uncannycomposer/' },
-                { type: 'linkedin', icon: <LinkedInLogo />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/simonianarthur' }
+                { type: 'linkedin', icon: <LinkedInLogo />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/simonianarthur' },
+                { type: 'uncanny', icon: <Zap className="h-5 w-5 text-white" />, label: 'Uncanny', url: 'https://uncannylabs.ai/' }
               ].map(({ type, icon, label, url }) => (
                 <div
                   key={type}
@@ -198,26 +199,6 @@ export default function Profile() {
                   </AnimatePresence>
                 </div>
               ))}
-            </div>
-            <div
-              className="flex items-center gap-2 px-2 py-1 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors cursor-pointer"
-              onMouseEnter={() => setHoveredButton('uncanny')}
-              onMouseLeave={() => setHoveredButton(null)}
-              onClick={() => window.open('https://uncannylabs.ai/', '_blank')}
-            >
-              <Zap className="h-4 w-4 text-white" />
-              <AnimatePresence>
-                {hoveredButton === 'uncanny' && (
-                  <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: 0 }}
-                    className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
-                  >
-                    Uncanny
-                  </motion.span>
-                )}
-              </AnimatePresence>
             </div>
           </motion.div>
         )}
