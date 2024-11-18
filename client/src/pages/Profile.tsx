@@ -31,7 +31,7 @@ const HexagonLogo = () => (
     className="h-5 w-5 text-white"
     fill="currentColor"
   >
-    <path d="M21.6 12l-4.2 7.2H6.6L2.4 12l4.2-7.2h10.8l4.2 7.2zM12 13.4l4.5-2.6-4.5-2.6-4.5 2.6z"/>
+    <path d="M21 12l-4.5 7.8H7.5L3 12l4.5-7.8h9L21 12z" />
   </svg>
 )
 
