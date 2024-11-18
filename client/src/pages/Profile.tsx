@@ -31,9 +31,31 @@ const HexagonLogo = () => (
     className="h-5 w-5 text-white"
     fill="currentColor"
   >
-    <path d="M21 16.5v-9L12 3 3 7.5v9L12 21l9-4.5zM12 19.18l-7-3.5v-7.36l7-3.5 7 3.5v7.36l-7 3.5z"/>
+    <path d="M21.6 12l-4.2 7.2H6.6L2.4 12l4.2-7.2h10.8l4.2 7.2zM12 13.4l4.5-2.6-4.5-2.6-4.5 2.6z"/>
   </svg>
 )
+
+const WaveformAnimation = () => {
+  const bars = Array(4).fill(0);
+  return (
+    <div className="flex gap-0.5 items-center h-6">
+      {bars.map((_, i) => (
+        <motion.div
+          key={i}
+          className="w-1 bg-white rounded-full"
+          animate={{
+            height: ['8px', '16px', '8px'],
+            transition: {
+              duration: 0.5,
+              repeat: Infinity,
+              delay: i * 0.1,
+            },
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 export default function Profile() {
   const [isHovering, setIsHovering] = useState(false)
@@ -112,7 +134,7 @@ export default function Profile() {
                   onMouseEnter={() => setIsHoveringOrange(true)}
                   onMouseLeave={() => setIsHoveringOrange(false)}
                 >
-                  <Waveform className={`h-6 w-6 text-white transition-transform duration-300 ${isHoveringOrange ? 'animate-spin-fast' : ''}`} />
+                  {isHoveringOrange ? <WaveformAnimation /> : <Waveform className="h-6 w-6 text-white" />}
                 </button>
                 <button 
                   className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110"
