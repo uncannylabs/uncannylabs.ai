@@ -45,7 +45,7 @@ const AnimatedWaveform = ({ isHovering }: { isHovering: boolean }) => {
       {bars.map((height, i) => (
         <motion.div
           key={i}
-          className="w-1 bg-white rounded-full"
+          className="w-[2px] bg-white/90 rounded-full"
           animate={isHovering ? {
             height: [
               `${height}px`,
