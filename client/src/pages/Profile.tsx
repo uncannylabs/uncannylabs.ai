@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText, Zap } from 'lucide-react'
+import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const XLogo = () => (
@@ -22,6 +22,16 @@ const LinkedInLogo = () => (
     fill="currentColor"
   >
     <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/>
+  </svg>
+)
+
+const HexagonLogo = () => (
+  <svg 
+    viewBox="0 0 24 24" 
+    className="h-5 w-5 text-white"
+    fill="currentColor"
+  >
+    <path d="M21 16.5v-9L12 3 3 7.5v9L12 21l9-4.5zM12 5.25l6.75 3.375v6.75L12 18.75l-6.75-3.375v-6.75L12 5.25z" />
   </svg>
 )
 
@@ -205,7 +215,7 @@ export default function Profile() {
               onMouseLeave={() => setHoveredButton(null)}
               onClick={() => window.open('https://uncannylabs.ai/', '_blank')}
             >
-              <Zap className="h-4 w-4 text-white" />
+              <HexagonLogo />
               <AnimatePresence>
                 {hoveredButton === 'uncanny' && (
                   <motion.span
