@@ -161,19 +161,19 @@ export default function Profile() {
               </AnimatePresence>
             </div>
             <div className="flex gap-2">
-              {['notes', 'twitter', 'linkedin'].map((type) => (
+              {[
+                { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'ReadCV', url: 'https://read.cv/simonian' },
+                { type: 'twitter', icon: <XLogo />, label: 'X', url: 'https://x.com/uncannycomposer/' },
+                { type: 'linkedin', icon: <Copy className="h-5 w-5 text-white" />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/simonianarthur' }
+              ].map(({ type, icon, label, url }) => (
                 <div
                   key={type}
                   className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
                   onMouseEnter={() => setHoveredButton(type as any)}
                   onMouseLeave={() => setHoveredButton(null)}
-                  onClick={() => {
-                    if (type === 'notes') window.open('https://read.cv/simonian', '_blank')
-                  }}
+                  onClick={() => window.open(url, '_blank')}
                 >
-                  {type === 'notes' && <FileText className="h-5 w-5 text-white" />}
-                  {type === 'twitter' && <XLogo />}
-                  {type === 'linkedin' && <Copy className="h-5 w-5 text-white" />}
+                  {icon}
                   <AnimatePresence>
                     {hoveredButton === type && (
                       <motion.span
@@ -182,7 +182,7 @@ export default function Profile() {
                         exit={{ opacity: 0, width: 0 }}
                         className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
                       >
-                        {type === 'notes' ? 'ReadCV' : type === 'twitter' ? 'X' : 'LinkedIn'}
+                        {label}
                       </motion.span>
                     )}
                   </AnimatePresence>
@@ -193,6 +193,7 @@ export default function Profile() {
               className="flex items-center gap-2 px-2 py-1 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors cursor-pointer"
               onMouseEnter={() => setHoveredButton('uncanny')}
               onMouseLeave={() => setHoveredButton(null)}
+              onClick={() => window.open('https://uncannylabs.ai/', '_blank')}
             >
               <Zap className="h-4 w-4 text-white" />
               <AnimatePresence>
@@ -211,7 +212,7 @@ export default function Profile() {
           </motion.div>
         )}
       </AnimatePresence>
-      <style jsx global>{`
+      <style>{`
         @keyframes spin {
           from {
             transform: rotate(0deg);
