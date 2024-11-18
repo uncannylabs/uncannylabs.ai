@@ -1,9 +1,10 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText, Zap } from 'lucide-react'
+import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText, Zap, Sun, Moon } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useTheme } from '../lib/theme-context'
 
 const XLogo = () => (
   <svg 
@@ -26,6 +27,7 @@ const LinkedInLogo = () => (
 )
 
 export default function Profile() {
+  const { theme, toggleTheme } = useTheme()
   const [isHovering, setIsHovering] = useState(false)
   const [isHoveringOrange, setIsHoveringOrange] = useState(false)
   const [isHoveringBlue, setIsHoveringBlue] = useState(false)
@@ -41,14 +43,34 @@ export default function Profile() {
   }
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-white p-4">
+    <div className={`flex items-center justify-center min-h-screen p-4 transition-colors duration-300 ${
+      theme === 'light' ? 'bg-gray-100' : 'bg-zinc-900'
+    }`}>
+      <div className="fixed top-4 right-4">
+        <button
+          onClick={toggleTheme}
+          className={`p-2 rounded-full transition-colors duration-300 ${
+            theme === 'light' 
+              ? 'bg-zinc-200 hover:bg-zinc-300' 
+              : 'bg-zinc-800 hover:bg-zinc-700'
+          }`}
+        >
+          {theme === 'light' ? (
+            <Moon className="h-5 w-5 text-zinc-700" />
+          ) : (
+            <Sun className="h-5 w-5 text-zinc-200" />
+          )}
+        </button>
+      </div>
       <AnimatePresence mode="wait">
         {currentView === 'initial' && (
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
+            className={`flex items-center rounded-full p-2 gap-2 shadow-lg w-fit transition-colors duration-300 ${
+              theme === 'light' ? 'bg-white' : 'bg-zinc-800'
+            }`}
           >
             <Avatar 
               className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
@@ -77,7 +99,9 @@ export default function Profile() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
+            className={`flex items-center rounded-full p-2 pr-3 gap-3 shadow-lg transition-colors duration-300 ${
+              theme === 'light' ? 'bg-white' : 'bg-zinc-800'
+            }`}
           >
             <Avatar 
               className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
@@ -122,22 +146,26 @@ export default function Profile() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg"
+            className={`rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg transition-colors duration-300 ${
+              theme === 'light' ? 'bg-white' : 'bg-black'
+            }`}
             onClick={() => setCurrentView('expanded')}
           >
             <div className="space-y-4">
-              <p className="text-lg leading-relaxed text-gray-400">
-                Hi, I am <span className="text-white">Arthur Simonian</span>. I am a <span className="text-white">creative</span> entrepreneur with too many ideas. Sometimes, I don't know if that is a good thing or a bad thing.
+              <p className={`text-lg leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                Hi, I am <span className={theme === 'light' ? 'text-black' : 'text-white'}>Arthur Simonian</span>. 
+                I am a <span className={theme === 'light' ? 'text-black' : 'text-white'}>creative</span> entrepreneur 
+                with too many ideas. Sometimes, I don't know if that is a good thing or a bad thing.
               </p>
-              <p className="text-lg leading-relaxed text-gray-400">
-                I started my journey in event planning and creative management while studying <span className="text-white">marketing</span> and <span className="text-white">psychology</span> in California. Shortly after graduation I dived into the Web3 world as a researcher and investor while working on different web3 projects from DeFi to Gaming.
+              <p className={`text-lg leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                I started my journey in event planning and creative management while studying <span className={theme === 'light' ? 'text-black' : 'text-white'}>marketing</span> and <span className={theme === 'light' ? 'text-black' : 'text-white'}>psychology</span> in California. Shortly after graduation I dived into the Web3 world as a researcher and investor while working on different web3 projects from DeFi to Gaming.
               </p>
-              <p className="text-lg leading-relaxed text-gray-400">
-                Eventually, I landed in <span className="text-white">AI</span>, more specifically in the decentralized AI sector where my first real start-up is navigating in.
+              <p className={`text-lg leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                Eventually, I landed in <span className={theme === 'light' ? 'text-black' : 'text-white'}>AI</span>, more specifically in the decentralized AI sector where my first real start-up is navigating in.
               </p>
-              <p className="text-lg leading-relaxed">
-                <span className="text-gray-400">I am currently learning and building in the <span className="text-white">open</span>. Follow me for my next moves. </span>
-                <span className="text-white">Lates!</span>
+              <p className={`text-lg leading-relaxed ${theme === 'light' ? 'text-gray-600' : 'text-gray-400'}`}>
+                <span className={theme === 'light' ? 'text-gray-600' : 'text-gray-400'}>I am currently learning and building in the <span className={theme === 'light' ? 'text-black' : 'text-white'}>open</span>. Follow me for my next moves. </span>
+                <span className={theme === 'light' ? 'text-black' : 'text-white'}>Lates!</span>
               </p>
             </div>
           </motion.div>
@@ -148,7 +176,9 @@ export default function Profile() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
+            className={`flex items-center rounded-full p-2 gap-3 shadow-lg transition-colors duration-300 ${
+              theme === 'light' ? 'bg-white' : 'bg-zinc-800'
+            }`}
           >
             <div 
               className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
@@ -224,12 +254,8 @@ export default function Profile() {
       </AnimatePresence>
       <style>{`
         @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
         }
         .animate-spin-fast {
           animation: spin 0.5s linear infinite;

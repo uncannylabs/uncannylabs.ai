@@ -5,14 +5,17 @@ import "./index.css";
 import { SWRConfig } from "swr";
 import { fetcher } from "./lib/fetcher";
 import Profile from "./pages/Profile";
+import { ThemeProvider } from "./lib/theme-context";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <SWRConfig value={{ fetcher }}>
-      <Switch>
-        <Route path="/" component={Profile} />
-        <Route>404 Page Not Found</Route>
-      </Switch>
-    </SWRConfig>
+    <ThemeProvider>
+      <SWRConfig value={{ fetcher }}>
+        <Switch>
+          <Route path="/" component={Profile} />
+          <Route>404 Page Not Found</Route>
+        </Switch>
+      </SWRConfig>
+    </ThemeProvider>
   </StrictMode>,
 );
