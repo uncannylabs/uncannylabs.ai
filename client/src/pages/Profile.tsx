@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -28,38 +28,29 @@ const LinkedInLogo = () => (
 const HexagonLogo = () => (
   <svg 
     viewBox="0 0 24 24" 
-    className="h-5 w-5 text-white"
-    fill="currentColor"
+    className="h-5 w-5"
+    fill="none"
+    stroke="white"
+    strokeWidth="2"
   >
     <path d="M21 12l-4.5 7.8H7.5L3 12l4.5-7.8h9L21 12z" />
   </svg>
 )
 
-const WaveformAnimation = () => {
-  const bars = Array(4).fill(0);
-  return (
-    <div className="flex gap-0.5 items-center h-6">
-      {bars.map((_, i) => (
-        <motion.div
-          key={i}
-          className="w-1 bg-white rounded-full"
-          animate={{
-            height: ['8px', '16px', '8px'],
-            transition: {
-              duration: 0.5,
-              repeat: Infinity,
-              delay: i * 0.1,
-            },
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+const StaticWaveform = () => (
+  <div className="flex gap-0.5 items-center h-6">
+    {[14, 16, 12, 14].map((height, i) => (
+      <div
+        key={i}
+        className="w-1 bg-white rounded-full"
+        style={{ height: `${height}px` }}
+      />
+    ))}
+  </div>
+);
 
 export default function Profile() {
   const [isHovering, setIsHovering] = useState(false)
-  const [isHoveringOrange, setIsHoveringOrange] = useState(false)
   const [isHoveringBlue, setIsHoveringBlue] = useState(false)
   const [currentView, setCurrentView] = useState<'initial' | 'expanded' | 'content' | 'links'>('initial')
   const [hoveredButton, setHoveredButton] = useState<'back' | 'notes' | 'twitter' | 'linkedin' | 'uncanny' | null>(null)
@@ -131,10 +122,8 @@ export default function Profile() {
                 <button 
                   className="h-12 w-12 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-600 transition-all duration-300 hover:scale-110"
                   onClick={() => setCurrentView('content')}
-                  onMouseEnter={() => setIsHoveringOrange(true)}
-                  onMouseLeave={() => setIsHoveringOrange(false)}
                 >
-                  {isHoveringOrange ? <WaveformAnimation /> : <Waveform className="h-6 w-6 text-white" />}
+                  <StaticWaveform />
                 </button>
                 <button 
                   className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110"
