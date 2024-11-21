@@ -86,15 +86,16 @@ export default function Profile() {
       <AnimatePresence mode="popLayout">
         {currentView === 'initial' && (
           <motion.div 
+            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={{
               type: "spring",
-              stiffness: 300,
-              damping: 25,
-              duration: 0.2
+              stiffness: 400,
+              damping: 30,
+              duration: 0.15
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
@@ -124,15 +125,16 @@ export default function Profile() {
 
         {currentView === 'expanded' && (
           <motion.div 
+            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={{
               type: "spring",
-              stiffness: 300,
-              damping: 25,
-              duration: 0.2
+              stiffness: 400,
+              damping: 30,
+              duration: 0.15
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
@@ -178,9 +180,16 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+              duration: 0.15
+            }}
             className="bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg"
             onClick={() => setCurrentView('expanded')}
           >
@@ -215,9 +224,17 @@ export default function Profile() {
 
         {currentView === 'links' && (
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            layoutId="container"
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 30,
+              duration: 0.15
+            }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
           >
             <div 
