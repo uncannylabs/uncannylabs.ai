@@ -1,6 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
+import { ChatBot } from '@/components/ChatBot'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -292,6 +293,7 @@ export default function Profile() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ChatBot />
       <style>{`
         @keyframes spin {
           from {
