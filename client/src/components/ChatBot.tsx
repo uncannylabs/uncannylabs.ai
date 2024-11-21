@@ -41,8 +41,7 @@ export function ChatBot() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: -20 }}
             exit={{ opacity: 0, y: 20 }}
-            className="absolute bottom-full mb-4 bg-zinc-900 rounded-lg w-[300px] shadow-lg overflow-hidden"
-            style={{ left: '50%', transform: 'translateX(-50%)' }}
+            className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 bg-zinc-900 rounded-lg w-[300px] shadow-lg overflow-hidden"
           >
             <div className="p-4 space-y-4 max-h-[400px] overflow-y-auto">
               {messages.map((msg, i) => (
