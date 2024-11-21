@@ -83,10 +83,9 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="sync">
         {currentView === 'initial' && (
           <motion.div 
-            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
@@ -99,7 +98,7 @@ export default function Profile() {
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
-            <motion.div layoutId="avatar">
+            <motion.div>
               <Avatar 
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
@@ -125,7 +124,6 @@ export default function Profile() {
 
         {currentView === 'expanded' && (
           <motion.div 
-            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
@@ -138,7 +136,7 @@ export default function Profile() {
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
-            <motion.div layoutId="avatar">
+            <motion.div>
               <Avatar 
                 className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
@@ -224,7 +222,6 @@ export default function Profile() {
 
         {currentView === 'links' && (
           <motion.div 
-            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
