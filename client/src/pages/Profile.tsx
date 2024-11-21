@@ -202,13 +202,18 @@ export default function Profile() {
                   key={index}
                   variants={{
                     initial: { opacity: 0, y: 20 },
-                    animate: { opacity: 1, y: 0 }
+                    animate: { opacity: 1, y: 0 },
+                    exit: { opacity: 0, y: -20 }
                   }}
                   initial="initial"
                   animate="animate"
-                  transition={{ delay: index * 0.1 }}
+                  exit="exit"
+                  transition={{ 
+                    delay: index * 0.1,
+                    exit: { delay: (3 - index) * 0.1 } // Reverse stagger on exit
+                  }}
                   className="text-lg leading-relaxed text-gray-400"
-                  >
+                >
                   {item.text}
                   <span className="text-white">{item.highlight}</span>
                   {item.rest}
