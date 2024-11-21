@@ -83,7 +83,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="sync">
+      <AnimatePresence mode="popLayout">
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUp}
@@ -98,17 +98,19 @@ export default function Profile() {
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
-            <Avatar 
-              className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={handleAvatarClick}
-            >
-              <AvatarImage 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
-                alt="Profile picture" 
-                className="object-cover"
-              />
-              <AvatarFallback>A</AvatarFallback>
-            </Avatar>
+            <motion.div layoutId="avatar">
+              <Avatar 
+                className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={handleAvatarClick}
+              >
+                <AvatarImage 
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
+                  alt="Profile picture" 
+                  className="object-cover"
+                />
+                <AvatarFallback>A</AvatarFallback>
+              </Avatar>
+            </motion.div>
             <div 
               className="h-12 w-12 rounded-full bg-emerald-500 flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110"
               onMouseEnter={() => setIsHovering(true)}
@@ -134,17 +136,19 @@ export default function Profile() {
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
-            <Avatar 
-              className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
-              onClick={handleAvatarClick}
-            >
-              <AvatarImage 
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
-                alt="Profile picture" 
-                className="object-cover"
-              />
-              <AvatarFallback>A</AvatarFallback>
-            </Avatar>
+            <motion.div layoutId="avatar">
+              <Avatar 
+                className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
+                onClick={handleAvatarClick}
+              >
+                <AvatarImage 
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
+                  alt="Profile picture" 
+                  className="object-cover"
+                />
+                <AvatarFallback>A</AvatarFallback>
+              </Avatar>
+            </motion.div>
             <div className="flex items-center gap-3">
               <div className="text-white">
                 <p className="text-base opacity-80">Hello, I'm</p>
