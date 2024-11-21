@@ -13,6 +13,6 @@ export const expandHorizontal: Variants = {
 }
 
 export const transition = {
-  duration: 0.3,
-  ease: 'easeInOut'
+  duration: 0.2,
+  ease: 'easeOut'
 }

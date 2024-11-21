@@ -83,20 +83,18 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="wait">
+      <AnimatePresence mode="sync">
         {currentView === 'initial' && (
           <motion.div 
-            layout
-            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={{
-              ...transition,
               type: "spring",
-              stiffness: 100,
-              damping: 15
+              stiffness: 300,
+              damping: 25,
+              duration: 0.2
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
@@ -124,17 +122,15 @@ export default function Profile() {
 
         {currentView === 'expanded' && (
           <motion.div 
-            layout
-            layoutId="container"
             variants={fadeInUp}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={{
-              ...transition,
               type: "spring",
-              stiffness: 100,
-              damping: 15
+              stiffness: 300,
+              damping: 25,
+              duration: 0.2
             }}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
