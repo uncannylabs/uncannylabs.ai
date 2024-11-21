@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { fadeInUp, expandHorizontal, transition } from '@/lib/animations'
 
 const XLogo = () => (
   <svg 
@@ -85,9 +86,18 @@ export default function Profile() {
       <AnimatePresence mode="wait">
         {currentView === 'initial' && (
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            layout
+            layoutId="container"
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              ...transition,
+              type: "spring",
+              stiffness: 100,
+              damping: 15
+            }}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <Avatar 
@@ -114,9 +124,18 @@ export default function Profile() {
 
         {currentView === 'expanded' && (
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            layout
+            layoutId="container"
+            variants={fadeInUp}
+            initial="initial"
+            animate="animate"
+            exit="exit"
+            transition={{
+              ...transition,
+              type: "spring",
+              stiffness: 100,
+              damping: 15
+            }}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <Avatar 
@@ -166,19 +185,30 @@ export default function Profile() {
             onClick={() => setCurrentView('expanded')}
           >
             <div className="space-y-4">
-              <p className="text-lg leading-relaxed text-gray-400">
-                Hi, I am <span className="text-white">Arthur Simonian</span>. I am a <span className="text-white">creative</span> entrepreneur with too many ideas. Sometimes, I don't know if that is a good thing or a bad thing.
-              </p>
-              <p className="text-lg leading-relaxed text-gray-400">
-                I started my journey in event planning and creative management while studying <span className="text-white">marketing</span> and <span className="text-white">psychology</span> in California. Shortly after graduation I dived into the Web3 world as a researcher and investor while working on different web3 projects from DeFi to Gaming.
-              </p>
-              <p className="text-lg leading-relaxed text-gray-400">
-                Eventually, I landed in <span className="text-white">AI</span>, more specifically in the decentralized AI sector where my first real start-up is navigating in.
-              </p>
-              <p className="text-lg leading-relaxed">
-                <span className="text-gray-400">I am currently learning and building in the <span className="text-white">open</span>. Follow me for my next moves. </span>
-                <span className="text-white">Lates!</span>
-              </p>
+              {[
+                { text: "Hi, I am ", highlight: "Arthur Simonian", rest: ". I am a ", highlight2: "creative", rest2: " entrepreneur with too many ideas. Sometimes, I don't know if that is a good thing or a bad thing." },
+                { text: "I started my journey in event planning and creative management while studying ", highlight: "marketing", rest: " and ", highlight2: "psychology", rest2: " in California. Shortly after graduation I dived into the Web3 world as a researcher and investor while working on different web3 projects from DeFi to Gaming." },
+                { text: "Eventually, I landed in ", highlight: "AI", rest: ", more specifically in the decentralized AI sector where my first real start-up is navigating in." },
+                { text: "I am currently learning and building in the ", highlight: "open", rest: ". Follow me for my next moves. ", highlight2: "Lates!", rest2: "" }
+              ].map((item, index) => (
+                <motion.p
+                  key={index}
+                  variants={{
+                    initial: { opacity: 0, y: 20 },
+                    animate: { opacity: 1, y: 0 }
+                  }}
+                  initial="initial"
+                  animate="animate"
+                  transition={{ delay: index * 0.1 }}
+                  className="text-lg leading-relaxed text-gray-400"
+                  >
+                  {item.text}
+                  <span className="text-white">{item.highlight}</span>
+                  {item.rest}
+                  {item.highlight2 && <span className="text-white">{item.highlight2}</span>}
+                  {item.rest2}
+                </motion.p>
+              ))}
             </div>
           </motion.div>
         )}
