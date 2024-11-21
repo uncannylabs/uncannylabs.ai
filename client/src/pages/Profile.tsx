@@ -83,7 +83,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="sync">
+      <AnimatePresence mode="popLayout">
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUp}
