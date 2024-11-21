@@ -34,14 +34,15 @@ export function ChatBot() {
   }
 
   return (
-    <div className="fixed bottom-6 right-6">
+    <div className="fixed bottom-6 left-1/2 -translate-x-1/2">
       <AnimatePresence>
         {isOpen && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+            animate={{ opacity: 1, y: -20 }}
             exit={{ opacity: 0, y: 20 }}
-            className="mb-4 bg-zinc-900 rounded-lg w-[300px] shadow-lg overflow-hidden"
+            className="absolute bottom-full mb-4 bg-zinc-900 rounded-lg w-[300px] shadow-lg overflow-hidden"
+            style={{ left: '50%', transform: 'translateX(-50%)' }}
           >
             <div className="p-4 space-y-4 max-h-[400px] overflow-y-auto">
               {messages.map((msg, i) => (
