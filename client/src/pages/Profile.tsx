@@ -269,14 +269,14 @@ export default function Profile() {
                 { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'ReadCV', url: 'https://read.cv/simonian' },
                 { type: 'twitter', icon: <XLogo />, label: 'X', url: 'https://x.com/uncannycomposer/' },
                 { type: 'linkedin', icon: <LinkedInLogo />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/simonianarthur' },
-                { type: 'uncanny', icon: <HexagonLogo />, label: 'Uncanny', url: 'https://uncannylabs.ai/' }
+                { type: 'uncanny', icon: <HexagonLogo />, label: 'World', url: 'http://world.uncannylabs.ai/' }
               ].map(({ type, icon, label, url }) => (
                 <div
                   key={type}
                   className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
                   onMouseEnter={() => setHoveredButton(type as any)}
                   onMouseLeave={() => setHoveredButton(null)}
-                  onClick={() => window.open(url, '_blank')}
+                  onClick={() => window.open(url, '_blank', 'noopener noreferrer')}
                 >
                   {icon}
                   <AnimatePresence>
