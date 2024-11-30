@@ -4,7 +4,26 @@ import React, { useState } from 'react'
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText, RefreshCw } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { fadeInUp, expandHorizontal, transition } from '@/lib/animations'
+
+// Shared animation configurations
+const springTransition = {
+  type: "spring",
+  stiffness: 500,
+  damping: 35,
+  mass: 1
+}
+
+const fadeInUpVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -20 }
+}
+
+const expandHorizontalVariants = {
+  initial: { width: 0, opacity: 0 },
+  animate: { width: 'auto', opacity: 1 },
+  exit: { width: 0, opacity: 0 }
+}
 
 const XLogo = () => (
   <svg 
@@ -52,7 +71,7 @@ const AnimatedWaveform = ({ isHovering }: { isHovering: boolean }) => {
           transition={{
             duration: 0.5,
             repeat: isHovering ? Infinity : 0,
-            ease: "linear"
+            ease: "easeInOut"
           }}
         />
       ))}
@@ -80,22 +99,18 @@ export default function Profile() {
       <AnimatePresence mode="wait" initial={false}>
         {currentView === 'initial' && (
           <motion.div 
-            variants={fadeInUp}
+            variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 30,
-              duration: 0.15
-            }}
-            layoutId="container"
+            transition={springTransition}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
-            <motion.div>
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              transition={springTransition}
+            >
               <Avatar 
-                layoutId="avatar"
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
               >
@@ -107,32 +122,29 @@ export default function Profile() {
                 <AvatarFallback>A</AvatarFallback>
               </Avatar>
             </motion.div>
-            <div 
-              className="h-12 w-12 rounded-full bg-emerald-500 flex items-center justify-center cursor-pointer transition-transform duration-300 hover:scale-110"
+            <motion.div 
+              className="h-12 w-12 rounded-full bg-emerald-500 flex items-center justify-center cursor-pointer"
+              whileHover={{ scale: 1.1 }}
+              transition={springTransition}
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => setCurrentView('expanded')}
             >
-              <Plus className={`h-8 w-8 text-white transition-transform duration-300 ${isHovering ? 'animate-spin-fast' : ''}`} />
-            </div>
+              <Plus className={`h-8 w-8 text-white transition-all duration-300 ${isHovering ? 'rotate-180 scale-110' : ''}`} />
+            </motion.div>
           </motion.div>
         )}
 
         {currentView === 'expanded' && (
           <motion.div 
-            variants={fadeInUp}
+            variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 30,
-              duration: 0.15
-            }}
+            transition={springTransition}
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
-            <motion.div>
+            <motion.div whileHover={{ scale: 1.05 }} transition={springTransition}>
               <Avatar 
                 className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
@@ -146,27 +158,49 @@ export default function Profile() {
               </Avatar>
             </motion.div>
             <div className="flex items-center gap-3">
-              <div className="text-white">
-                <p className="text-base opacity-80">We are</p>
-                <p className="text-lg font-medium">Uncanny</p>
-              </div>
+              <motion.div 
+                className="text-white"
+                variants={fadeInUpVariants}
+                initial="initial"
+                animate="animate"
+                transition={{ delay: 0.1 }}
+              >
+                <motion.p 
+                  className="text-base opacity-80"
+                  variants={fadeInUpVariants}
+                  transition={{ delay: 0.2 }}
+                >
+                  We are
+                </motion.p>
+                <motion.p 
+                  className="text-lg font-medium"
+                  variants={fadeInUpVariants}
+                  transition={{ delay: 0.3 }}
+                >
+                  Uncanny
+                </motion.p>
+              </motion.div>
               <div className="flex gap-2">
-                <button 
-                  className="h-12 w-12 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-600 transition-all duration-300 hover:scale-110"
+                <motion.button 
+                  className="h-12 w-12 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-600"
+                  whileHover={{ scale: 1.1 }}
+                  transition={springTransition}
                   onClick={() => setCurrentView('content')}
                   onMouseEnter={() => setIsHoveringOrange(true)}
                   onMouseLeave={() => setIsHoveringOrange(false)}
                 >
                   <AnimatedWaveform isHovering={isHoveringOrange} />
-                </button>
-                <button 
-                  className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600 transition-all duration-300 hover:scale-110"
+                </motion.button>
+                <motion.button 
+                  className="h-12 w-12 rounded-full bg-blue-500 flex items-center justify-center hover:bg-blue-600"
+                  whileHover={{ scale: 1.1 }}
+                  transition={springTransition}
                   onClick={() => setCurrentView('links')}
                   onMouseEnter={() => setIsHoveringBlue(true)}
                   onMouseLeave={() => setIsHoveringBlue(false)}
                 >
-                  <MoreHorizontal className={`h-6 w-6 text-white transition-transform duration-300 ${isHoveringBlue ? 'animate-spin-fast' : ''}`} />
-                </button>
+                  <MoreHorizontal className={`h-6 w-6 text-white transition-all duration-300 ${isHoveringBlue ? 'rotate-180 scale-110' : ''}`} />
+                </motion.button>
               </div>
             </div>
           </motion.div>
@@ -174,17 +208,12 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
-            variants={fadeInUp}
+            variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 30,
-              duration: 0.15
-            }}
-            className="bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg"
+            transition={springTransition}
+            className="bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
             onClick={() => setCurrentView('expanded')}
           >
             <div className="space-y-4">
@@ -198,27 +227,36 @@ export default function Profile() {
               ].map((item, index) => (
                 <motion.p
                   key={index}
-                  variants={{
-                    initial: { opacity: 0, y: 20 },
-                    animate: { opacity: 1, y: 0 },
-                    exit: { opacity: 0, y: -20 }
-                  }}
+                  variants={fadeInUpVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
                   transition={{ 
+                    ...springTransition,
                     delay: index * 0.1,
-                    exit: { delay: (3 - index) * 0.1 }
+                    exit: { delay: (5 - index) * 0.05 }
                   }}
                   className="text-lg leading-relaxed text-gray-400"
                 >
                   {item.text}
-                  <span className="text-white">{item.highlight}</span>
+                  <motion.span 
+                    className="text-white"
+                    whileHover={{ scale: 1.05 }}
+                    transition={springTransition}
+                  >
+                    {item.highlight}
+                  </motion.span>
                   {item.rest}
-                  {item.highlight2 && <span className="text-white">{item.highlight2}</span>}
+                  {item.highlight2 && (
+                    <motion.span 
+                      className="text-white"
+                      whileHover={{ scale: 1.05 }}
+                      transition={springTransition}
+                    >
+                      {item.highlight2}
+                    </motion.span>
+                  )}
                   {item.rest2}
-                  {item.highlight3 && <span className="text-white">{item.highlight3}</span>}
-                  {item.rest3}
                 </motion.p>
               ))}
             </div>
@@ -227,20 +265,17 @@ export default function Profile() {
 
         {currentView === 'links' && (
           <motion.div 
-            variants={fadeInUp}
+            variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
             exit="exit"
-            transition={{
-              type: "spring",
-              stiffness: 400,
-              damping: 30,
-              duration: 0.15
-            }}
+            transition={springTransition}
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
           >
-            <div 
+            <motion.div 
               className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
+              whileHover={{ scale: 1.05 }}
+              transition={springTransition}
               onMouseEnter={() => setHoveredButton('back')}
               onMouseLeave={() => setHoveredButton(null)}
               onClick={() => setCurrentView('expanded')}
@@ -249,16 +284,18 @@ export default function Profile() {
               <AnimatePresence>
                 {hoveredButton === 'back' && (
                   <motion.span
-                    initial={{ opacity: 0, width: 0 }}
-                    animate={{ opacity: 1, width: 'auto' }}
-                    exit={{ opacity: 0, width: 0 }}
+                    variants={expandHorizontalVariants}
+                    initial="initial"
+                    animate="animate"
+                    exit="exit"
+                    transition={springTransition}
                     className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
                   >
                     Back
                   </motion.span>
                 )}
               </AnimatePresence>
-            </div>
+            </motion.div>
             <div className="flex gap-2">
               {[
                 { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'Manifesto', url: 'https://uncanny-labs.gitbook.io/uncanny-world' },
@@ -266,9 +303,11 @@ export default function Profile() {
                 { type: 'linkedin', icon: <LinkedInLogo />, label: 'Sync', url: 'http://sync.uncannylabs.ai/' },
                 { type: 'twitter', icon: <XLogo />, label: '@uncanny_labs', url: 'https://x.com/uncanny_labs' }
               ].map(({ type, icon, label, url }) => (
-                <div
+                <motion.div
                   key={type}
                   className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
+                  whileHover={{ scale: 1.05 }}
+                  transition={springTransition}
                   onMouseEnter={() => setHoveredButton(type as any)}
                   onMouseLeave={() => setHoveredButton(null)}
                   onClick={() => window.open(url, '_blank', 'noopener noreferrer')}
@@ -277,16 +316,18 @@ export default function Profile() {
                   <AnimatePresence>
                     {hoveredButton === type && (
                       <motion.span
-                        initial={{ opacity: 0, width: 0 }}
-                        animate={{ opacity: 1, width: 'auto' }}
-                        exit={{ opacity: 0, width: 0 }}
+                        variants={expandHorizontalVariants}
+                        initial="initial"
+                        animate="animate"
+                        exit="exit"
+                        transition={springTransition}
                         className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
                       >
                         {label}
                       </motion.span>
                     )}
                   </AnimatePresence>
-                </div>
+                </motion.div>
               ))}
             </div>
           </motion.div>
