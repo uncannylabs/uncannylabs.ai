@@ -46,6 +46,24 @@ const expandHorizontalVariants = {
   exit: { width: 0, opacity: 0 }
 }
 
+const textVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: [0.16, 1, 0.3, 1]
+    }
+  }),
+  exit: { 
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.2 }
+  }
+}
+
 const XLogo = () => (
   <svg 
     viewBox="0 0 24 24" 
@@ -238,6 +256,8 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
+            layoutId="container"
+            layout="position"
             variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
@@ -257,15 +277,11 @@ export default function Profile() {
               ].map((item, index) => (
                 <motion.p
                   key={index}
-                  variants={fadeInUpVariants}
+                  custom={index}
+                  variants={textVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
-                  transition={{ 
-                    ...springTransition,
-                    delay: index * 0.1,
-                    exit: { delay: (5 - index) * 0.05 }
-                  }}
                   className="text-lg leading-relaxed text-gray-400"
                 >
                   {item.text}
