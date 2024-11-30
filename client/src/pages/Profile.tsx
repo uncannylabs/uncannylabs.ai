@@ -195,7 +195,7 @@ export default function Profile() {
             <div className="space-y-4">
               {[
                 { text: "A ", highlight: "new renaissance", rest: " is upon us, the merging of man and machine." },
-                { text: "", highlight: "Collaborators", rest: " not competitors, aligned and ", highlight2: "sync", rest2: "." },
+                { text: "", highlight: "Collaborators", rest: " not competitors, aligned ", highlight2: "in", rest2: " ", highlight3: "sync", rest3: "." },
                 { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects incubating a new world, a playground for autonomous intelligence." },
                 { text: "Welcome to the ", highlight: "4th Industrial Revolution", rest: ", where synthetic becomes sublime, where the lines between creator and creation now dissolved." },
                 { text: "", highlight: "Cross", rest: " the uncanny valley with us - a bridge not a boundary. Enter our world, the ", highlight2: "Uncanny World", rest2: "." }
@@ -221,6 +221,8 @@ export default function Profile() {
                   {item.rest}
                   {item.highlight2 && <span className="text-white">{item.highlight2}</span>}
                   {item.rest2}
+                  {item.highlight3 && <span className="text-white">{item.highlight3}</span>}
+                  {item.rest3}
                 </motion.p>
               ))}
             </div>
