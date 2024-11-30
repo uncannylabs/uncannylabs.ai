@@ -105,7 +105,7 @@ export default function Profile() {
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
+                  src="/logo1.png"
                   alt="Profile picture" 
                   className="object-cover"
                 />
@@ -143,7 +143,7 @@ export default function Profile() {
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202024-11-18%20at%205.54.40%20PM-nXJZFXA1OVDVrKuLGZ5O4pIumUc0Ll.png"
+                  src="/logo1.png"
                   alt="Profile picture" 
                   className="object-cover"
                 />
@@ -211,7 +211,7 @@ export default function Profile() {
                   exit="exit"
                   transition={{ 
                     delay: index * 0.1,
-                    exit: { delay: (3 - index) * 0.1 } // Reverse stagger on exit
+                    exit: { delay: (3 - index) * 0.1 }
                   }}
                   className="text-lg leading-relaxed text-gray-400"
                 >
