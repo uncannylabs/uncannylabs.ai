@@ -77,7 +77,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="popLayout">
+      <AnimatePresence mode="wait" initial={false}>
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUp}
@@ -90,10 +90,12 @@ export default function Profile() {
               damping: 30,
               duration: 0.15
             }}
+            layoutId="container"
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div>
               <Avatar 
+                layoutId="avatar"
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
               >
