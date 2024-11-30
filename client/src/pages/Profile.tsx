@@ -267,9 +267,9 @@ export default function Profile() {
             <div className="flex gap-2">
               {[
                 { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'Manifesto', url: 'https://read.cv/simonian' },
-                { type: 'twitter', icon: <XLogo />, label: '@uncanny_labs', url: 'https://x.com/uncanny_labs' },
+                { type: 'uncanny', icon: <HexagonLogo />, label: 'World', url: 'http://world.uncannylabs.ai/' },
                 { type: 'linkedin', icon: <LinkedInLogo />, label: 'Sync', url: 'http://sync.uncannylabs.ai/' },
-                { type: 'uncanny', icon: <HexagonLogo />, label: 'World', url: 'http://world.uncannylabs.ai/' }
+                { type: 'twitter', icon: <XLogo />, label: '@uncanny_labs', url: 'https://x.com/uncanny_labs' }
               ].map(({ type, icon, label, url }) => (
                 <div
                   key={type}
