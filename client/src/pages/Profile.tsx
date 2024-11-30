@@ -194,10 +194,11 @@ export default function Profile() {
           >
             <div className="space-y-4">
               {[
-                { text: "We are ", highlight: "creators", rest: " and ", highlight2: "innovators", rest2: " pushing the boundaries of what's possible with AI technology." },
-                { text: "Our journey began with a simple vision: to make ", highlight: "artificial intelligence", rest: " more ", highlight2: "accessible", rest2: " and decentralized for everyone." },
-                { text: "We specialize in ", highlight: "decentralized AI", rest: " solutions, bridging the gap between cutting-edge technology and practical applications." },
-                { text: "Together, we're ", highlight: "building", rest: " the future of AI. ", highlight2: "Join us", rest2: " on this exciting journey." }
+                { text: "A ", highlight: "new renaissance", rest: " is upon us, the ", highlight2: "merging", rest2: " of man and machine." },
+                { text: "", highlight: "Collaborators", rest: " not competitors, ", highlight2: "aligned", rest2: " and in sync." },
+                { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects ", highlight2: "incubating", rest2: " a new world, a playground for autonomous intelligence." },
+                { text: "Welcome to the ", highlight: "4th industrial revolution", rest: ", where ", highlight2: "synthetic", rest2: " becomes sublime, where the lines between creator and creation now dissolved." },
+                { text: "", highlight: "Cross the uncanny valley", rest: " with us - ", highlight2: "a bridge", rest2: " not a boundary. Enter our world, the Uncanny World." }
               ].map((item, index) => (
                 <motion.p
                   key={index}
