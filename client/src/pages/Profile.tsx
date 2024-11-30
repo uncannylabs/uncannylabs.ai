@@ -5,85 +5,12 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Plus, AudioWaveformIcon as Waveform, MoreHorizontal, ArrowLeft, FileText, RefreshCw } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
-// Shared animation configurations
+// Simplified animation configuration
 const springTransition = {
   type: "spring",
-  stiffness: 60,     // Reduced for smoother motion
-  damping: 12,       // For minimal oscillation
-  mass: 0.4,         // Lighter feel
-  restDelta: 0.001,
-  restSpeed: 0.001
+  stiffness: 400,
+  damping: 30
 }
-
-const fadeInUpVariants = {
-  initial: { 
-    opacity: 0,
-  },
-  animate: { 
-    opacity: 1,
-    transition: {
-      duration: 0.3,
-      ease: "easeOut"
-    }
-  },
-  exit: { 
-    opacity: 0,
-    transition: {
-      duration: 0.2,
-      ease: "easeIn"
-    }
-  }
-}
-
-const expandHorizontalVariants = {
-  initial: { 
-    width: 0, 
-    opacity: 0,
-  },
-  animate: { 
-    width: 'auto', 
-    opacity: 1,
-    transition: {
-      duration: 0.2,
-      ease: "easeOut"
-    }
-  },
-  exit: { 
-    width: 0, 
-    opacity: 0,
-    transition: {
-      duration: 0.15,
-      ease: "easeIn"
-    }
-  }
-}
-
-const XLogo = () => (
-  <svg 
-    viewBox="0 0 24 24" 
-    className="h-5 w-5 text-white"
-    fill="currentColor"
-  >
-    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-  </svg>
-)
-
-const LinkedInLogo = () => (
-  <RefreshCw className="h-5 w-5 text-white" />
-)
-
-const HexagonLogo = () => (
-  <svg 
-    viewBox="0 0 24 24" 
-    className="h-5 w-5"
-    fill="none"
-    stroke="white"
-    strokeWidth="2"
-    style={{ transform: 'rotate(30deg)' }}
-  >
-    <path d="M21 12l-4.5 7.8H7.5L3 12l4.5-7.8h9L21 12z" />
-  </svg>
-)
 
 const AnimatedWaveform = ({ isHovering }: { isHovering: boolean }) => {
   const bars = [16, 14, 18, 12, 15];
@@ -112,6 +39,33 @@ const AnimatedWaveform = ({ isHovering }: { isHovering: boolean }) => {
   );
 };
 
+const XLogo = () => (
+  <svg 
+    viewBox="0 0 24 24" 
+    className="h-5 w-5 text-white"
+    fill="currentColor"
+  >
+    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+  </svg>
+)
+
+const LinkedInLogo = () => (
+  <RefreshCw className="h-5 w-5 text-white" />
+)
+
+const HexagonLogo = () => (
+  <svg 
+    viewBox="0 0 24 24" 
+    className="h-5 w-5"
+    fill="none"
+    stroke="white"
+    strokeWidth="2"
+    style={{ transform: 'rotate(30deg)' }}
+  >
+    <path d="M21 12l-4.5 7.8H7.5L3 12l4.5-7.8h9L21 12z" />
+  </svg>
+)
+
 export default function Profile() {
   const [isHovering, setIsHovering] = useState(false)
   const [isHoveringOrange, setIsHoveringOrange] = useState(false)
@@ -129,21 +83,18 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="popLayout" initial={false}>
+      <AnimatePresence initial={false}>
         {currentView === 'initial' && (
           <motion.div 
-            variants={fadeInUpVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={springTransition}
-            layoutId="profile-outer-container"
             className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="profile-avatar-container"
               className="overflow-hidden rounded-full"
             >
               <Avatar 
@@ -165,7 +116,6 @@ export default function Profile() {
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => setCurrentView('expanded')}
-              layoutId="profile-action-button"
             >
               <Plus className={`h-8 w-8 text-white transition-all duration-300 ${isHovering ? 'rotate-180 scale-110' : ''}`} />
             </motion.div>
@@ -174,18 +124,15 @@ export default function Profile() {
 
         {currentView === 'expanded' && (
           <motion.div 
-            variants={fadeInUpVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={springTransition}
-            layoutId="profile-outer-container"
             className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="profile-avatar-container"
               className="overflow-hidden rounded-full"
             >
               <Avatar 
@@ -201,28 +148,10 @@ export default function Profile() {
               </Avatar>
             </motion.div>
             <div className="flex items-center gap-3">
-              <motion.div 
-                className="text-white"
-                variants={fadeInUpVariants}
-                initial="initial"
-                animate="animate"
-                transition={{ delay: 0.1 }}
-              >
-                <motion.p 
-                  className="text-base opacity-80"
-                  variants={fadeInUpVariants}
-                  transition={{ delay: 0.2 }}
-                >
-                  We are
-                </motion.p>
-                <motion.p 
-                  className="text-lg font-medium"
-                  variants={fadeInUpVariants}
-                  transition={{ delay: 0.3 }}
-                >
-                  Uncanny
-                </motion.p>
-              </motion.div>
+              <div className="text-white">
+                <p className="text-base opacity-80">We are</p>
+                <p className="text-lg font-medium">Uncanny</p>
+              </div>
               <div className="flex gap-2">
                 <motion.button 
                   className="h-12 w-12 rounded-full bg-orange-500 flex items-center justify-center hover:bg-orange-600"
@@ -231,7 +160,6 @@ export default function Profile() {
                   onClick={() => setCurrentView('content')}
                   onMouseEnter={() => setIsHoveringOrange(true)}
                   onMouseLeave={() => setIsHoveringOrange(false)}
-                  layoutId="profile-action-button"
                 >
                   <AnimatedWaveform isHovering={isHoveringOrange} />
                 </motion.button>
@@ -252,11 +180,9 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
-            layoutId="profile-outer-container"
-            variants={fadeInUpVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={springTransition}
             className="overflow-hidden bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
             onClick={() => setCurrentView('expanded')}
@@ -270,15 +196,7 @@ export default function Profile() {
                 { text: "Cross the ", highlight: "uncanny valley", rest: " with us - a bridge not a boundary." },
                 { text: "Enter our world, the ", highlight: "Uncanny World", rest: "." }
               ].map((item, index) => (
-                <motion.p
-                  key={index}
-                  custom={index}
-                  variants={fadeInUpVariants}
-                  initial="initial"
-                  animate="animate"
-                  exit="exit"
-                  className="text-lg leading-relaxed text-gray-400"
-                >
+                <p key={index} className="text-lg leading-relaxed text-gray-400">
                   {item.text}
                   <motion.span 
                     className="text-white"
@@ -298,7 +216,7 @@ export default function Profile() {
                     </motion.span>
                   )}
                   {item.rest2}
-                </motion.p>
+                </p>
               ))}
             </div>
           </motion.div>
@@ -306,12 +224,10 @@ export default function Profile() {
 
         {currentView === 'links' && (
           <motion.div 
-            variants={fadeInUpVariants}
-            initial="initial"
-            animate="animate"
-            exit="exit"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={springTransition}
-            layoutId="profile-outer-container"
             className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
           >
             <motion.div 
@@ -326,10 +242,9 @@ export default function Profile() {
               <AnimatePresence>
                 {hoveredButton === 'back' && (
                   <motion.span
-                    variants={expandHorizontalVariants}
-                    initial="initial"
-                    animate="animate"
-                    exit="exit"
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: 'auto', opacity: 1 }}
+                    exit={{ width: 0, opacity: 0 }}
                     transition={springTransition}
                     className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
                   >
@@ -358,10 +273,9 @@ export default function Profile() {
                   <AnimatePresence>
                     {hoveredButton === type && (
                       <motion.span
-                        variants={expandHorizontalVariants}
-                        initial="initial"
-                        animate="animate"
-                        exit="exit"
+                        initial={{ width: 0, opacity: 0 }}
+                        animate={{ width: 'auto', opacity: 1 }}
+                        exit={{ width: 0, opacity: 0 }}
                         transition={springTransition}
                         className="text-sm text-white font-medium overflow-hidden whitespace-nowrap"
                       >
