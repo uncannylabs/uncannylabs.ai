@@ -194,10 +194,10 @@ export default function Profile() {
           >
             <div className="space-y-4">
               {[
-                { text: "Hi, I am ", highlight: "Arthur Simonian", rest: ". I am a ", highlight2: "creative", rest2: " entrepreneur with too many ideas. Sometimes, I don't know if that is a good thing or a bad thing." },
-                { text: "I started my journey in event planning and creative management while studying ", highlight: "marketing", rest: " and ", highlight2: "psychology", rest2: " in California. Shortly after graduation I dived into the Web3 world as a researcher and investor while working on different web3 projects from DeFi to Gaming." },
-                { text: "Eventually, I landed in ", highlight: "AI", rest: ", more specifically in the decentralized AI sector where my first real start-up is navigating in." },
-                { text: "I am currently learning and building in the ", highlight: "open", rest: ". Follow me for my next moves. ", highlight2: "Lates!", rest2: "" }
+                { text: "We are ", highlight: "creators", rest: " and ", highlight2: "innovators", rest2: " pushing the boundaries of what's possible with AI technology." },
+                { text: "Our journey began with a simple vision: to make ", highlight: "artificial intelligence", rest: " more ", highlight2: "accessible", rest2: " and decentralized for everyone." },
+                { text: "We specialize in ", highlight: "decentralized AI", rest: " solutions, bridging the gap between cutting-edge technology and practical applications." },
+                { text: "Together, we're ", highlight: "building", rest: " the future of AI. ", highlight2: "Join us", rest2: " on this exciting journey." }
               ].map((item, index) => (
                 <motion.p
                   key={index}
