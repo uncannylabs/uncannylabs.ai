@@ -266,7 +266,7 @@ export default function Profile() {
             </div>
             <div className="flex gap-2">
               {[
-                { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'ReadCV', url: 'https://read.cv/simonian' },
+                { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'Manifesto', url: 'https://read.cv/simonian' },
                 { type: 'twitter', icon: <XLogo />, label: 'X', url: 'https://x.com/uncannycomposer/' },
                 { type: 'linkedin', icon: <LinkedInLogo />, label: 'LinkedIn', url: 'https://www.linkedin.com/in/simonianarthur' },
                 { type: 'uncanny', icon: <HexagonLogo />, label: 'World', url: 'http://world.uncannylabs.ai/' }
