@@ -8,32 +8,33 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Shared animation configurations
 const springTransition = {
   type: "spring",
-  stiffness: 100, // Reduced for smoother motion
-  damping: 20,    // Adjusted for less bouncing
-  mass: 0.8,      // Lighter feel
+  stiffness: 80,    // Reduced for smoother motion
+  damping: 15,      // Adjusted for smoother bouncing
+  mass: 0.5,        // Lighter feel
   restDelta: 0.001,
-  restSpeed: 0.001
+  restSpeed: 0.001,
+  duration: 0.4     // Consistent duration
 }
 
 const fadeInUpVariants = {
   initial: { 
     opacity: 0,
-    scale: 0.95
+    scale: 0.98
   },
   animate: { 
     opacity: 1,
     scale: 1,
     transition: {
-      duration: 0.2,
-      ease: [0.22, 1, 0.36, 1]
+      duration: 0.3,
+      ease: [0.16, 1, 0.3, 1]
     }
   },
   exit: { 
     opacity: 0,
-    scale: 0.95,
+    scale: 0.98,
     transition: {
-      duration: 0.15,
-      ease: [0.22, 1, 0.36, 1]
+      duration: 0.2,
+      ease: [0.16, 1, 0.3, 1]
     }
   }
 }
@@ -161,7 +162,7 @@ export default function Profile() {
             exit="exit"
             transition={springTransition}
             layoutId="profile-container"
-            className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
+            className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -169,7 +170,8 @@ export default function Profile() {
               layoutId="avatar-wrapper"
             >
               <Avatar 
-                className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
+                className="h-12 w-12 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
+              style={{ transformOrigin: 'center' }}
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
@@ -202,7 +204,7 @@ export default function Profile() {
             exit="exit"
             transition={springTransition}
             layoutId="profile-container"
-            className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
+            className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
@@ -210,7 +212,8 @@ export default function Profile() {
               layoutId="avatar-wrapper"
             >
               <Avatar 
-                className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
+                className="h-14 w-14 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
+              style={{ transformOrigin: 'center' }}
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
