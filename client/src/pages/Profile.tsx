@@ -195,7 +195,7 @@ export default function Profile() {
             <div className="space-y-4">
               {[
                 { text: "A ", highlight: "new renaissance", rest: " is upon us, the merging of man and machine." },
-                { text: "", highlight: "Collaborators", rest: " not competitors, ", highlight2: "aligned and in sync", rest2: "." },
+                { text: "", highlight: "Collaborators", rest: " not competitors, aligned and in ", highlight2: "sync", rest2: "." },
                 { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects incubating a new world, a playground for autonomous intelligence." },
                 { text: "Welcome to the ", highlight: "4th Industrial Revolution", rest: ", where synthetic becomes sublime, where the lines between creator and creation now dissolved." },
                 { text: "", highlight: "Cross", rest: " the uncanny valley with us - a bridge not a boundary." },
