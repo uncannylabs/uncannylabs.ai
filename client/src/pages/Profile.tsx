@@ -8,33 +8,29 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Shared animation configurations
 const springTransition = {
   type: "spring",
-  stiffness: 80,    // Reduced for smoother motion
-  damping: 15,      // Adjusted for smoother bouncing
-  mass: 0.5,        // Lighter feel
+  stiffness: 60,     // Reduced for smoother motion
+  damping: 12,       // For minimal oscillation
+  mass: 0.4,         // Lighter feel
   restDelta: 0.001,
-  restSpeed: 0.001,
-  duration: 0.4     // Consistent duration
+  restSpeed: 0.001
 }
 
 const fadeInUpVariants = {
   initial: { 
     opacity: 0,
-    scale: 0.98
   },
   animate: { 
     opacity: 1,
-    scale: 1,
     transition: {
       duration: 0.3,
-      ease: [0.16, 1, 0.3, 1]
+      ease: "easeOut"
     }
   },
   exit: { 
     opacity: 0,
-    scale: 0.98,
     transition: {
       duration: 0.2,
-      ease: [0.16, 1, 0.3, 1]
+      ease: "easeIn"
     }
   }
 }
@@ -43,12 +39,10 @@ const expandHorizontalVariants = {
   initial: { 
     width: 0, 
     opacity: 0,
-    x: -10
   },
   animate: { 
     width: 'auto', 
     opacity: 1,
-    x: 0,
     transition: {
       duration: 0.2,
       ease: "easeOut"
@@ -57,28 +51,10 @@ const expandHorizontalVariants = {
   exit: { 
     width: 0, 
     opacity: 0,
-    x: -10,
     transition: {
-      duration: 0.15
+      duration: 0.15,
+      ease: "easeIn"
     }
-  }
-}
-
-const textVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: {
-      delay: i * 0.1,
-      duration: 0.5,
-      ease: [0.16, 1, 0.3, 1]
-    }
-  }),
-  exit: { 
-    opacity: 0,
-    y: -20,
-    transition: { duration: 0.2 }
   }
 }
 
@@ -161,17 +137,17 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
-            layoutId="profile-container"
+            layoutId="profile-outer-container"
             className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="avatar-wrapper"
+              layoutId="profile-avatar-container"
+              className="overflow-hidden rounded-full"
             >
               <Avatar 
                 className="h-12 w-12 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
-              style={{ transformOrigin: 'center' }}
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
@@ -189,7 +165,7 @@ export default function Profile() {
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => setCurrentView('expanded')}
-              layoutId="action-button"
+              layoutId="profile-action-button"
             >
               <Plus className={`h-8 w-8 text-white transition-all duration-300 ${isHovering ? 'rotate-180 scale-110' : ''}`} />
             </motion.div>
@@ -203,17 +179,17 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
-            layoutId="profile-container"
+            layoutId="profile-outer-container"
             className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="avatar-wrapper"
+              layoutId="profile-avatar-container"
+              className="overflow-hidden rounded-full"
             >
               <Avatar 
                 className="h-14 w-14 flex-shrink-0 cursor-pointer hover:opacity-90 transition-opacity"
-              style={{ transformOrigin: 'center' }}
                 onClick={handleAvatarClick}
               >
                 <AvatarImage 
@@ -255,7 +231,7 @@ export default function Profile() {
                   onClick={() => setCurrentView('content')}
                   onMouseEnter={() => setIsHoveringOrange(true)}
                   onMouseLeave={() => setIsHoveringOrange(false)}
-                  layoutId="action-button"
+                  layoutId="profile-action-button"
                 >
                   <AnimatedWaveform isHovering={isHoveringOrange} />
                 </motion.button>
@@ -276,13 +252,13 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
-            layoutId="profile-container"
+            layoutId="profile-outer-container"
             variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
             exit="exit"
             transition={springTransition}
-            className="bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
+            className="overflow-hidden bg-black rounded-[32px] p-8 max-w-[600px] w-full cursor-pointer shadow-lg hover:shadow-xl transition-shadow"
             onClick={() => setCurrentView('expanded')}
           >
             <div className="space-y-4">
@@ -297,7 +273,7 @@ export default function Profile() {
                 <motion.p
                   key={index}
                   custom={index}
-                  variants={textVariants}
+                  variants={fadeInUpVariants}
                   initial="initial"
                   animate="animate"
                   exit="exit"
@@ -335,8 +311,8 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
-            layoutId="profile-container"
-            className="flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
+            layoutId="profile-outer-container"
+            className="overflow-hidden flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
           >
             <motion.div 
               className="flex items-center gap-2 rounded-full hover:bg-zinc-800 transition-colors px-2 py-1 cursor-pointer"
