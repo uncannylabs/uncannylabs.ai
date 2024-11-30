@@ -1,0 +1,39 @@
+[vite] connecting...
+Warning: React does not recognize the &#x60;layoutId&#x60; prop on a DOM element. If you intentionally want it to appear in the DOM as a custom attribute, spell it as lowercase &#x60;layoutid&#x60; instead. If you accidentally passed it from a parent component, remove it from the DOM element.
+    at span
+    at https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:219:13
+    at Provider (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:29:15)
+    at https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:237:13
+    at _c (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/src/components/ui/avatar.tsx:21:11)
+    at div
+    at MotionComponent (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:6455:40)
+    at div
+    at MotionComponent (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:6455:40)
+    at PresenceChild (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:7660:24)
+    at AnimatePresence (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:7718:26)
+    at div
+    at Profile (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/src/pages/Profile.tsx?t=1732967650291:132:39)
+    at Route (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/wouter.js?v=68c4d087:191:16)
+    at Switch (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/wouter.js?v=68c4d087:247:17)
+    at SWRConfig (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/swr.js?v=68c4d087:423:11)
+at span
+at https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:219:13
+at Provider (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:29:15)
+at https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/@radix-ui_react-avatar.js?v=68c4d087:237:13
+at _c (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/src/components/ui/avatar.tsx:21:11)
+at div
+at MotionComponent (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:6455:40)
+at div
+at MotionComponent (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:6455:40)
+at PresenceChild (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:7660:24)
+at AnimatePresence (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/framer-motion.js?v=68c4d087:7718:26)
+at div
+at Profile (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/src/pages/Profile.tsx?t=1732967650291:132:39)
+at Route (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/wouter.js?v=68c4d087:191:16)
+at Switch (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/wouter.js?v=68c4d087:247:17)
+at SWRConfig (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/@fs/home/runner/uncannylabsai/node_modules/.vite/deps/swr.js?v=68c4d087:423:11)
+at t.value (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:17465)
+at new t (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:12630)
+at t.value (https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:32766)
+at https://13380191-8e85-42e4-a4f0-682fe86f1d7d-00-nazg2nw5jzsk.riker.replit.dev/__replco/static/devtools/eruda/3.2.3/eruda.js:2:34400
+[vite] connected.

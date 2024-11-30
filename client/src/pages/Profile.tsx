@@ -8,16 +8,36 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Shared animation configurations
 const springTransition = {
   type: "spring",
-  stiffness: 300,
-  damping: 30,
-  mass: 1.2,
-  duration: 0.5
+  stiffness: 200,
+  damping: 25,
+  mass: 1,
+  restDelta: 0.001
 }
 
 const fadeInUpVariants = {
-  initial: { opacity: 0, y: 20 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: -20 }
+  initial: { 
+    opacity: 0,
+    y: 10,
+    scale: 0.95
+  },
+  animate: { 
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.2,
+      ease: [0.16, 1, 0.3, 1],
+      staggerChildren: 0.1
+    }
+  },
+  exit: { 
+    opacity: 0,
+    y: -10,
+    scale: 0.95,
+    transition: {
+      duration: 0.15
+    }
+  }
 }
 
 const expandHorizontalVariants = {
@@ -97,7 +117,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="sync" initial={false}>
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUpVariants}
@@ -112,11 +132,11 @@ export default function Profile() {
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
+              layoutId="avatar-container"
             >
               <Avatar 
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
-                layoutId="avatar"
               >
                 <AvatarImage 
                   src="/logo1.png"
@@ -150,11 +170,14 @@ export default function Profile() {
             layoutId="container"
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
-            <motion.div whileHover={{ scale: 1.05 }} transition={springTransition}>
+            <motion.div 
+              whileHover={{ scale: 1.05 }} 
+              transition={springTransition}
+              layoutId="avatar-container"
+            >
               <Avatar 
                 className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
-                layoutId="avatar"
               >
                 <AvatarImage 
                   src="/logo1.png"
