@@ -260,7 +260,7 @@ export default function Profile() {
             </div>
             <div className="flex gap-2">
               {[
-                { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'Manifesto', url: 'https://read.cv/simonian' },
+                { type: 'notes', icon: <FileText className="h-5 w-5 text-white" />, label: 'Manifesto', url: 'https://uncanny-labs.gitbook.io/uncanny-world' },
                 { type: 'uncanny', icon: <HexagonLogo />, label: 'World', url: 'http://world.uncannylabs.ai/' },
                 { type: 'linkedin', icon: <LinkedInLogo />, label: 'Sync', url: 'http://sync.uncannylabs.ai/' },
                 { type: 'twitter', icon: <XLogo />, label: '@uncanny_labs', url: 'https://x.com/uncanny_labs' }
