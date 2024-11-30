@@ -8,9 +8,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Shared animation configurations
 const springTransition = {
   type: "spring",
-  stiffness: 500,
-  damping: 35,
-  mass: 1
+  stiffness: 300,
+  damping: 30,
+  mass: 1.2,
+  duration: 0.5
 }
 
 const fadeInUpVariants = {
@@ -104,6 +105,8 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
+            layout="position"
+            layoutId="container"
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div 
@@ -113,6 +116,7 @@ export default function Profile() {
               <Avatar 
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
+                layoutId="avatar"
               >
                 <AvatarImage 
                   src="/logo1.png"
@@ -142,12 +146,15 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
+            layout="position"
+            layoutId="container"
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <motion.div whileHover={{ scale: 1.05 }} transition={springTransition}>
               <Avatar 
                 className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
                 onClick={handleAvatarClick}
+                layoutId="avatar"
               >
                 <AvatarImage 
                   src="/logo1.png"
