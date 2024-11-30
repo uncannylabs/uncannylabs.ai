@@ -194,11 +194,11 @@ export default function Profile() {
           >
             <div className="space-y-4">
               {[
-                { text: "A ", highlight: "new renaissance", rest: " is upon us, the ", highlight2: "merging", rest2: " of man and machine." },
-                { text: "", highlight: "Collaborators", rest: " not competitors, ", highlight2: "aligned", rest2: " and in sync." },
-                { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects ", highlight2: "incubating", rest2: " a new world, a playground for autonomous intelligence." },
-                { text: "Welcome to the ", highlight: "4th industrial revolution", rest: ", where ", highlight2: "synthetic", rest2: " becomes sublime, where the lines between creator and creation now dissolved." },
-                { text: "", highlight: "Cross the uncanny valley", rest: " with us - ", highlight2: "a bridge", rest2: " not a boundary. Enter our world, the Uncanny World." }
+                { text: "A ", highlight: "new renaissance", rest: " is upon us, the merging of man and machine." },
+                { text: "", highlight: "Collaborators", rest: " not competitors, aligned and ", highlight2: "sync", rest2: "." },
+                { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects incubating a new world, a playground for autonomous intelligence." },
+                { text: "Welcome to the ", highlight: "4th Industrial Revolution", rest: ", where synthetic becomes sublime, where the lines between creator and creation now dissolved." },
+                { text: "", highlight: "Cross", rest: " the uncanny valley with us - a bridge not a boundary. Enter our world, the ", highlight2: "Uncanny World", rest2: "." }
               ].map((item, index) => (
                 <motion.p
                   key={index}
