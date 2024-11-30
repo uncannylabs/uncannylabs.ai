@@ -198,7 +198,7 @@ export default function Profile() {
                 { text: "", highlight: "Collaborators", rest: " not competitors, aligned and in ", highlight2: "sync", rest2: "." },
                 { text: "We are ", highlight: "Uncanny Labs", rest: ", the architects incubating a new world, a playground for autonomous intelligence." },
                 { text: "Welcome to the ", highlight: "4th Industrial Revolution", rest: ", where synthetic becomes sublime, where the lines between creator and creation now dissolved." },
-                { text: "", highlight: "Cross", rest: " the uncanny valley with us - a bridge not a boundary." },
+                { text: "Cross the ", highlight: "uncanny valley", rest: " with us - a bridge not a boundary." },
                 { text: "Enter our world, the ", highlight: "Uncanny World", rest: "." }
               ].map((item, index) => (
                 <motion.p
