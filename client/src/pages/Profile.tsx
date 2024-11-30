@@ -152,8 +152,9 @@ export default function Profile() {
             </motion.div>
             <div className="flex items-center gap-3">
               <div className="text-white">
-                <p className="text-base opacity-80">Hello, I'm</p>
-                <p className="text-lg font-medium">Arthur</p>
+                <p className="text-base opacity-80">This is</p>
+                <p className="text-lg font-medium">Uncanny</p>
+                <p className="text-base opacity-80">Labs</p>
               </div>
               <div className="flex gap-2">
                 <button 
