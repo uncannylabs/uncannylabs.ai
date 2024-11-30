@@ -17,33 +17,51 @@ const springTransition = {
 const fadeInUpVariants = {
   initial: { 
     opacity: 0,
-    y: 10,
-    scale: 0.95
+    scale: 0.95,
+    x: 0  // Remove horizontal movement
   },
   animate: { 
     opacity: 1,
-    y: 0,
     scale: 1,
+    x: 0,
     transition: {
-      duration: 0.2,
-      ease: [0.16, 1, 0.3, 1],
-      staggerChildren: 0.1
+      duration: 0.3,
+      ease: [0.16, 1, 0.3, 1]
     }
   },
   exit: { 
     opacity: 0,
-    y: -10,
     scale: 0.95,
+    x: 0,
     transition: {
-      duration: 0.15
+      duration: 0.2
     }
   }
 }
 
 const expandHorizontalVariants = {
-  initial: { width: 0, opacity: 0 },
-  animate: { width: 'auto', opacity: 1 },
-  exit: { width: 0, opacity: 0 }
+  initial: { 
+    width: 0, 
+    opacity: 0,
+    x: -10  // Slight offset for smoother appearance
+  },
+  animate: { 
+    width: 'auto', 
+    opacity: 1,
+    x: 0,
+    transition: {
+      duration: 0.2,
+      ease: "easeOut"
+    }
+  },
+  exit: { 
+    width: 0, 
+    opacity: 0,
+    x: -10,
+    transition: {
+      duration: 0.15
+    }
+  }
 }
 
 const textVariants = {
@@ -135,7 +153,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="sync" initial={false}>
+      <AnimatePresence mode="wait" initial={false}>
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUpVariants}
