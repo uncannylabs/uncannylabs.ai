@@ -8,33 +8,32 @@ import { motion, AnimatePresence } from 'framer-motion'
 // Shared animation configurations
 const springTransition = {
   type: "spring",
-  stiffness: 200,
-  damping: 25,
-  mass: 1,
-  restDelta: 0.001
+  stiffness: 100, // Reduced for smoother motion
+  damping: 20,    // Adjusted for less bouncing
+  mass: 0.8,      // Lighter feel
+  restDelta: 0.001,
+  restSpeed: 0.001
 }
 
 const fadeInUpVariants = {
   initial: { 
     opacity: 0,
-    scale: 0.95,
-    x: 0  // Remove horizontal movement
+    scale: 0.95
   },
   animate: { 
     opacity: 1,
     scale: 1,
-    x: 0,
     transition: {
-      duration: 0.3,
-      ease: [0.16, 1, 0.3, 1]
+      duration: 0.2,
+      ease: [0.22, 1, 0.36, 1]
     }
   },
   exit: { 
     opacity: 0,
     scale: 0.95,
-    x: 0,
     transition: {
-      duration: 0.2
+      duration: 0.15,
+      ease: [0.22, 1, 0.36, 1]
     }
   }
 }
@@ -43,7 +42,7 @@ const expandHorizontalVariants = {
   initial: { 
     width: 0, 
     opacity: 0,
-    x: -10  // Slight offset for smoother appearance
+    x: -10
   },
   animate: { 
     width: 'auto', 
@@ -153,7 +152,7 @@ export default function Profile() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-white p-4">
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence mode="popLayout" initial={false}>
         {currentView === 'initial' && (
           <motion.div 
             variants={fadeInUpVariants}
@@ -161,14 +160,13 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
-            layout="position"
-            layoutId="container"
+            layoutId="profile-container"
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-2 shadow-lg w-fit"
           >
             <motion.div 
               whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="avatar-container"
+              layoutId="avatar-wrapper"
             >
               <Avatar 
                 className="h-12 w-12 cursor-pointer hover:opacity-90 transition-opacity"
@@ -189,6 +187,7 @@ export default function Profile() {
               onMouseEnter={() => setIsHovering(true)}
               onMouseLeave={() => setIsHovering(false)}
               onClick={() => setCurrentView('expanded')}
+              layoutId="action-button"
             >
               <Plus className={`h-8 w-8 text-white transition-all duration-300 ${isHovering ? 'rotate-180 scale-110' : ''}`} />
             </motion.div>
@@ -202,14 +201,13 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
-            layout="position"
-            layoutId="container"
+            layoutId="profile-container"
             className="flex items-center bg-zinc-900 rounded-full p-2 pr-3 gap-3 shadow-lg"
           >
             <motion.div 
-              whileHover={{ scale: 1.05 }} 
+              whileHover={{ scale: 1.05 }}
               transition={springTransition}
-              layoutId="avatar-container"
+              layoutId="avatar-wrapper"
             >
               <Avatar 
                 className="h-14 w-14 cursor-pointer hover:opacity-90 transition-opacity"
@@ -254,6 +252,7 @@ export default function Profile() {
                   onClick={() => setCurrentView('content')}
                   onMouseEnter={() => setIsHoveringOrange(true)}
                   onMouseLeave={() => setIsHoveringOrange(false)}
+                  layoutId="action-button"
                 >
                   <AnimatedWaveform isHovering={isHoveringOrange} />
                 </motion.button>
@@ -274,8 +273,7 @@ export default function Profile() {
 
         {currentView === 'content' && (
           <motion.div
-            layoutId="container"
-            layout="position"
+            layoutId="profile-container"
             variants={fadeInUpVariants}
             initial="initial"
             animate="animate"
@@ -334,6 +332,7 @@ export default function Profile() {
             animate="animate"
             exit="exit"
             transition={springTransition}
+            layoutId="profile-container"
             className="flex items-center bg-zinc-900 rounded-full p-2 gap-3 shadow-lg"
           >
             <motion.div 
@@ -397,19 +396,6 @@ export default function Profile() {
           </motion.div>
         )}
       </AnimatePresence>
-      <style>{`
-        @keyframes spin {
-          from {
-            transform: rotate(0deg);
-          }
-          to {
-            transform: rotate(360deg);
-          }
-        }
-        .animate-spin-fast {
-          animation: spin 0.5s linear infinite;
-        }
-      `}</style>
     </div>
   )
 }
